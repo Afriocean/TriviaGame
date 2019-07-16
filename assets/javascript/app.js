@@ -14,7 +14,21 @@ $(document).ready(function(){
    //starts the game and finishes the game
   // submits answers and finishes the game
   // ----------------------------------------------------------------
-  
+  //added event listener for every question
+  $(".answers").on("click", test );  
+
+  function test(event){
+    console.log (event)
+    if(event.target.nodeName !== 'INPUT') return
+    if(event.target.dataset.correct){
+// correct
+correct ++
+    } else {
+incorrect ++
+    }
+  console.log(correct,incorrect)   
+}
+    
 
    // functions
       function start(){
@@ -46,6 +60,7 @@ $(document).ready(function(){
       }
       function finish(){
         var userAnswer = $(this).val();
+        
           number = 1; // if number is equal to 0 number will show -1 so 1 has to be selected
           clearInterval(counter); // stops the timer
           timer();
